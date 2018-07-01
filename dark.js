@@ -3,8 +3,6 @@
 module.exports.genTheme = colors => {
   let { syntax, bg, fg } = colors;
 
-  console.log(bg, fg);
-
   // sets the workbench colors to a gradient between bg and fg
   let m1, m2, m3, m4, m5, m6, m7, m8;
   let g = gradient(bg, fg);
@@ -18,10 +16,11 @@ module.exports.genTheme = colors => {
   m8 = fg;
 
   let t1, t2, t3, t4, t5;
-  if (syntax.length == 5) {
-    [t1, t2, t3, t4, t5] = syntax;
-  } else {
-  }
+  t1 = syntax[0%syntax.length]
+  t2 = syntax[1%syntax.length]
+  t3 = syntax[2%syntax.length]
+  t4 = syntax[3%syntax.length]
+  t5 = syntax[4%syntax.length]
 
   let gitadd = '#145901';
   let gitremove = '#870000';
@@ -1439,6 +1438,16 @@ module.exports.genTheme = colors => {
     ]
   };
   return theme;
+};
+
+module.exports.genSettings = colors => {
+  let theme = module.exports.genTheme(colors);
+  return {
+    "workbench.colorCustomizations": theme.colors,
+    "editor.tokenColorCustomizations": {
+      "textMateRules": theme.tokenColors
+    }
+  };
 };
 
 // copied from https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors

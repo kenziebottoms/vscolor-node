@@ -3,7 +3,10 @@
 const { Router } = require('express');
 const router = Router();
 
-const { genTheme } = require('./dark');
+const {
+  genTheme,
+  genSettings
+} = require('./dark');
 
 router.post('/dark', (req, res, next) => {
   let { body } = req;
@@ -13,7 +16,8 @@ router.post('/dark', (req, res, next) => {
       message: "Please provide a valid `syntax`, `fg`, and `bg`."
     });
   } else {
-    res.status(200).json(genTheme(body));
+    let data = req.query.settings ? genSettings(body) : genTheme(body);
+    res.status(200).json(data);
   }
 });
 
