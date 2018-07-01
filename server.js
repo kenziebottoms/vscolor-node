@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routing
-// app.use(require('./server/routes'));
+app.use(require('./routes'));
 
 app.listen(3001, () => {
   console.log('server listening on port 3001');
