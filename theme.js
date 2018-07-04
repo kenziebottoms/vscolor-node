@@ -21,6 +21,9 @@ module.exports.genTheme = colors => {
   t3 = syntax[2 % syntax.length];
   t4 = syntax[3 % syntax.length];
   t5 = syntax[4 % syntax.length];
+  
+  if (!neg) neg = t1;
+  if (!pos) pos = t2;
 
   let gitadd = `${pos}66`;
   let gitremove = `${neg}66`;
