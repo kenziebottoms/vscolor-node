@@ -6,9 +6,9 @@ const router = Router();
 const {
   genTheme,
   genSettings
-} = require('./dark');
+} = require('./theme');
 
-router.post('/dark', (req, res, next) => {
+router.post('/new', (req, res, next) => {
   let { body } = req;
   let { syntax, fg, bg } = body;
   if (!syntax || !fg || !bg) {

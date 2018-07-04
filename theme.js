@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports.genTheme = colors => {
-  let { syntax, bg, fg } = colors;
+  let { syntax, bg, fg, pos, neg } = colors;
 
   // sets the workbench colors to a gradient between bg and fg
   let m1, m2, m3, m4, m5, m6, m7, m8;
@@ -16,18 +16,18 @@ module.exports.genTheme = colors => {
   m8 = fg;
 
   let t1, t2, t3, t4, t5;
-  t1 = syntax[0 % syntax.length]
-  t2 = syntax[1 % syntax.length]
-  t3 = syntax[2 % syntax.length]
-  t4 = syntax[3 % syntax.length]
-  t5 = syntax[4 % syntax.length]
+  t1 = syntax[0 % syntax.length];
+  t2 = syntax[1 % syntax.length];
+  t3 = syntax[2 % syntax.length];
+  t4 = syntax[3 % syntax.length];
+  t5 = syntax[4 % syntax.length];
 
-  let gitadd = '#145901';
-  let gitremove = '#870000';
+  let gitadd = `${pos}66`;
+  let gitremove = `${neg}66`;
   let theme = {
     "colors": {
       "foreground": m8,
-      "errorForeground": t1,
+      "errorForeground": neg,
       "focusBorder": m1,
       "contrastBorder": m1,
       "input.foreground": m8,
@@ -36,10 +36,10 @@ module.exports.genTheme = colors => {
       "input.placeholderForeground": m8,
       "inputValidation.infoBackground": t3,
       "inputValidation.infoBorder": t3,
-      "inputValidation.warningBackground": t5,
-      "inputValidation.warningBorder": t5,
-      "inputValidation.errorBackground": t1,
-      "inputValidation.errorBorder": t1,
+      "inputValidation.warningBackground": neg,
+      "inputValidation.warningBorder": neg,
+      "inputValidation.errorBackground": neg,
+      "inputValidation.errorBorder": neg,
       "dropdown.background": m1,
       "dropdown.foreground": m8,
       "dropdown.border": m3,
@@ -66,17 +66,17 @@ module.exports.genTheme = colors => {
       "editor.foreground": m8,
       "editorWidget.background": m1,
       "editor.selectionBackground": m2,
-      "editor.inactiveSelectionBackground": "#25272d",
+      "editor.inactiveSelectionBackground": m3,
       "editor.selectionHighlightBackground": m2,
       "editor.findMatchHighlightBackground": m2,
       "editor.findRangeHighlightBackground": m2,
       "editor.hoverHighlightBackground": m2,
       "editorHoverWidget.background": m1,
       "editorHoverWidget.border": t3,
-      "diffEditor.insertedTextBackground": "#145901",
-      "diffEditor.removedTextBackground": "#870000",
-      "diffEditor.insertedTextBorder": "#145901",
-      "diffEditor.removedTextBorder": "#870000",
+      "diffEditor.insertedTextBackground": gitadd,
+      "diffEditor.removedTextBackground": gitremove,
+      "diffEditor.insertedTextBorder": gitadd,
+      "diffEditor.removedTextBorder": gitremove,
       "merge.currentHeaderBackground": t3,
       "merge.incomingHeaderBackground": t3,
       "editorOverviewRuler.currentContentForeground": t3,
@@ -85,16 +85,16 @@ module.exports.genTheme = colors => {
       "editor.lineHighlightBackground": m2,
       "editor.lineHighlightBorder": m2,
       "editor.rangeHighlightBackground": m2,
-      "editorCursor.foreground": t3,
+      "editorCursor.foreground": m6,
       "editorIndentGuide.background": m6,
       "editorLineNumber.foreground": m6,
       "editorRuler.foreground": m6,
-      "editorError.foreground": t1,
-      "editorWarning.foreground": t2,
-      "editorMarkerNavigationError.background": t1,
-      "editorMarkerNavigationWarning.background": t5,
+      "editorError.foreground": neg,
+      "editorWarning.foreground": neg,
+      "editorMarkerNavigationError.background": neg,
+      "editorMarkerNavigationWarning.background": neg,
       "editorMarkerNavigation.background": m1,
-      "editor.wordHighlightBackground": m2,
+      "editor.wordHighlightBackground": m3,
       "editor.wordHighlightStrongBackground": m2,
       "peekViewTitle.background": m1,
       "peekViewTitleLabel.foreground": m8,
@@ -102,8 +102,8 @@ module.exports.genTheme = colors => {
       "peekViewResult.lineForeground": m8,
       "peekViewResult.fileForeground": m8,
       "peekViewResult.selectionForeground": m8,
-      "peekViewResult.matchHighlightBackground": m2,
-      "peekViewEditor.matchHighlightBackground": m2,
+      "peekViewResult.matchHighlightBackground": gitadd,
+      "peekViewEditor.matchHighlightBackground": gitadd,
       "tab.activeBackground": m1,
       "tab.inactiveBackground": m1,
       "tab.border": m1,
@@ -136,24 +136,24 @@ module.exports.genTheme = colors => {
       "titleBar.activeForeground": m8,
       "debugExceptionWidget.border": t3,
       "debugExceptionWidget.background": m1,
-      "editorGutter.modifiedBackground": t4,
-      "editorGutter.addedBackground": t2,
+      "editorGutter.modifiedBackground": gitremove,
+      "editorGutter.addedBackground": gitadd,
       "editorGutter.deletedBackground": t1,
       "debugToolBar.background": m1,
       "extensionButton.prominentBackground": t3,
       "extensionButton.prominentForeground": m1,
       "extensionButton.prominentHoverBackground": t3,
       "terminal.ansiBlack": m7,
-      "terminal.ansiRed": t1,
-      "terminal.ansiGreen": t2,
+      "terminal.ansiRed": neg,
+      "terminal.ansiGreen": pos,
       "terminal.ansiYellow": t4,
       "terminal.ansiBlue": t3,
       "terminal.ansiMagenta": t1,
       "terminal.ansiCyan": t3,
       "terminal.ansiWhite": m8,
       "terminal.ansiBrightBlack": m7,
-      "terminal.ansiBrightRed": t1,
-      "terminal.ansiBrightGreen": t2,
+      "terminal.ansiBrightRed": neg,
+      "terminal.ansiBrightGreen": pos,
       "terminal.ansiBrightYellow": t4,
       "terminal.ansiBrightBlue": t3,
       "terminal.ansiBrightMagenta": t2,
@@ -636,15 +636,15 @@ module.exports.genTheme = colors => {
         "name": "Invalid Broken",
         "scope": "invalid.broken",
         "settings": {
-          "background": t1,
-          "foreground": m1
+          "background": gitremove,
+          "foreground": m8
         }
       },
       {
         "name": "Invalid Unimplemented",
         "scope": "invalid.unimplemented",
         "settings": {
-          "background": t5,
+          "background": gitremove,
           "foreground": m8
         }
       },
@@ -653,7 +653,7 @@ module.exports.genTheme = colors => {
         "scope": "invalid.illegal",
         "settings": {
           "foreground": m8,
-          "background": t1
+          "background": gitremove
         }
       },
       {
@@ -1434,13 +1434,13 @@ module.exports.genTheme = colors => {
       {
         "scope": "token.warn-token",
         "settings": {
-          "foreground": t3
+          "foreground": neg
         }
       },
       {
         "scope": "token.error-token",
         "settings": {
-          "foreground": t1
+          "foreground": neg
         }
       },
       {
