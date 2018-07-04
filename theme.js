@@ -68,7 +68,7 @@ module.exports.genTheme = colors => {
       "editor.selectionBackground": m2,
       "editor.inactiveSelectionBackground": m3,
       "editor.selectionHighlightBackground": m2,
-      "editor.findMatchHighlightBackground": m2,
+      "editor.findMatchHighlightBackground": gitadd,
       "editor.findRangeHighlightBackground": m2,
       "editor.hoverHighlightBackground": m2,
       "editorHoverWidget.background": m1,
