@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports.genTheme = colors => {
-  let { syntax, bg, fg, pos, neg } = colors;
+  let { syntax, bg, fg, pos, neg, ui } = colors;
 
   // sets the workbench colors to a gradient between bg and fg
   let m1, m2, m3, m4, m5, m6, m7, m8;
@@ -25,8 +25,10 @@ module.exports.genTheme = colors => {
   if (!neg) neg = t1;
   if (!pos) pos = t2;
 
-  let gitadd = `${pos}66`;
-  let gitremove = `${neg}66`;
+  let q = "orange";
+
+  let gitadd = `${pos}44`;
+  let gitremove = `${neg}44`;
   let theme = {
     "colors": {
       "foreground": m8,
@@ -34,7 +36,7 @@ module.exports.genTheme = colors => {
       "focusBorder": m1,
       "contrastBorder": m1,
       "input.foreground": m8,
-      "input.border": t3,
+      "input.border": ui,
       "inputOption.activeBorder": m8,
       "input.placeholderForeground": m8,
       "inputValidation.infoBackground": t3,
@@ -45,21 +47,24 @@ module.exports.genTheme = colors => {
       "inputValidation.errorBorder": neg,
       "dropdown.background": m1,
       "dropdown.foreground": m8,
-      "dropdown.border": m3,
+      "dropdown.border": "#00000000",
+      "list.errorForeground": neg,
+      "list.warningForeground": `${neg}44`,
+      "list.invalidItemForeground": neg,
       "list.focusBackground": m4,
       "list.focusForeground": m8,
       "list.activeSelectionBackground": m3,
       "list.activeSelectionForeground": m8,
       "list.inactiveSelectionBackground": m3,
       "list.inactiveSelectionForeground": m8,
-      "list.hoverBackground": m4,
+      "list.hoverBackground": m2,
       "list.hoverForeground": m8,
       "list.highlightForeground": m8,
       "pickerGroup.foreground": t3,
       "button.foreground": m1,
       "button.background": t2,
-      "button.hoverBackground": t2,
-      "badge.background": t3,
+      "button.hoverBackground": ui,
+      "badge.background": ui,
       "badge.foreground": m1,
       "scrollbarSlider.background": m4,
       "scrollbarSlider.hoverBackground": m3,
@@ -68,14 +73,14 @@ module.exports.genTheme = colors => {
       "editor.background": m1,
       "editor.foreground": m8,
       "editorWidget.background": m1,
-      "editor.selectionBackground": m2,
+      "editor.selectionBackground": m3,
       "editor.inactiveSelectionBackground": m3,
       "editor.selectionHighlightBackground": m2,
       "editor.findMatchHighlightBackground": gitadd,
       "editor.findRangeHighlightBackground": m2,
-      "editor.hoverHighlightBackground": m2,
-      "editorHoverWidget.background": m1,
-      "editorHoverWidget.border": t3,
+      "editor.hoverHighlightBackground": m1,
+      "editorHoverWidget.background": m2,
+      "editorHoverWidget.border": ui,
       "diffEditor.insertedTextBackground": gitadd,
       "diffEditor.removedTextBackground": gitremove,
       "diffEditor.insertedTextBorder": gitadd,
@@ -107,10 +112,10 @@ module.exports.genTheme = colors => {
       "peekViewResult.selectionForeground": m8,
       "peekViewResult.matchHighlightBackground": gitadd,
       "peekViewEditor.matchHighlightBackground": gitadd,
-      "tab.activeBackground": m1,
-      "tab.inactiveBackground": m1,
+      "tab.activeBackground": m3,
+      "tab.inactiveBackground": m2,
       "tab.border": m1,
-      "tab.activeBorder": m1,
+      "tab.activeBorder": ui || "#0000000",
       "tab.unfocusedActiveBorder": m1,
       "tab.activeForeground": m8,
       "tab.inactiveForeground": m6,
@@ -119,7 +124,7 @@ module.exports.genTheme = colors => {
       "panel.background": m1,
       "panel.border": m1,
       "panelTitle.activeForeground": m8,
-      "panelTitle.activeBorder": t3,
+      "panelTitle.activeBorder": ui,
       "statusBar.foreground": m6,
       "statusBar.background": m1,
       "statusBar.noFolderBackground": m1,
@@ -128,7 +133,7 @@ module.exports.genTheme = colors => {
       "activityBar.foreground": m5,
       "activityBar.border": m1,
       "activityBar.dropBackground": t3,
-      "activityBarBadge.background": t3,
+      "activityBarBadge.background": ui,
       "activityBarBadge.foreground": m1,
       "sideBar.background": m1,
       "sideBar.foreground": m8,
@@ -1482,14 +1487,14 @@ const blend = (c1, c2, p) => {
 
 const gradient = (c1, c2) => {
   return [
-    blend(c1, c2, 0.1),
+    blend(c1, c2, 0.075),
+    blend(c1, c2, 0.125),
     blend(c1, c2, 0.2),
     blend(c1, c2, 0.3),
     blend(c1, c2, 0.4),
     blend(c1, c2, 0.5),
     blend(c1, c2, 0.6),
     blend(c1, c2, 0.7),
-    blend(c1, c2, 0.8),
     blend(c1, c2, 0.9),
   ];
 };
