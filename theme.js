@@ -14,6 +14,7 @@ module.exports.genTheme = colors => {
   m6 = g[5];
   m7 = g[7];
   m8 = fg;
+  let m15 = gradient(m1, m2)[5];
 
   let t1, t2, t3, t4, t5;
   t1 = syntax[0 % syntax.length];
@@ -136,7 +137,7 @@ module.exports.genTheme = colors => {
       "activityBar.dropBackground": t3,
       "activityBarBadge.background": ui,
       "activityBarBadge.foreground": m1,
-      "sideBar.background": m1,
+      "sideBar.background": m15,
       "sideBar.foreground": m8,
       "sideBar.border": m1,
       "sideBarTitle.foreground": m8,
@@ -169,7 +170,7 @@ module.exports.genTheme = colors => {
       "terminal.ansiBrightCyan": t3,
       "terminal.ansiBrightWhite": m8,
       "gitDecoration.modifiedResourceForeground": t3,
-      "gitDecoration.untrackedResourceForeground": gitadd,
+      "gitDecoration.untrackedResourceForeground": pos,
       "gitDecoration.ignoredResourceForeground": m6,
       "gitDecoration.conflictingResourceForeground": neg
     },
@@ -184,7 +185,7 @@ module.exports.genTheme = colors => {
         "name": "Comment",
         "scope": "comment",
         "settings": {
-          "foreground": m6
+          "foreground": m5
         }
       },
       {
